@@ -1,0 +1,28 @@
+{
+  "name": "storeapp",
+  "version": "1.0.0",
+  "description": "Proyecto web desarrollado con metodología Scrum, JS, ReactJS, NOdeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byron411/storeApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/byron411/storeApp/issues"
+  },
+  "homepage": "https://github.com/byron411/storeApp#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
