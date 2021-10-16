@@ -6,15 +6,16 @@ const router=express.Router();
 //Utilizamos nuestro esquema de productos
 const Producto= require('../models/task')
 
+
 //Select
-router.get('/',async(req,res)=>{
+router.get('/api/productos',async(req,res)=>{
     const productos = await Producto.find();
     console.log(productos);
     res.json(productos);
 });
 
 //Insert
-router.post('/',async(req,res)=>{
+router.post('/api/productos',async(req,res)=>{
        
     var {descripcion,valor_unitario, estado}=req.body;
     var nuevatarea= new Producto({descripcion, valor_unitario,estado});
@@ -23,7 +24,7 @@ router.post('/',async(req,res)=>{
 });
 
 //Update
-router.put('/:id',async(req,res)=>{
+router.put('/api/productos/:id',async(req,res)=>{
     var {descripcion,valor_unitario, estado}=req.body;
     var nuevatarea={descripcion,valor_unitario, estado};
     await Producto.findByIdAndUpdate(req.params.id, nuevatarea);
@@ -31,16 +32,21 @@ router.put('/:id',async(req,res)=>{
 });
 
 //Delete
-router.delete('/:id',async(req,res)=>{
+router.delete('/api/productos/:id',async(req,res)=>{
     await Producto.findByIdAndDelete(req.params.id);
     res.json({"Status":"Eliminado"});
 });
 
 
 //SelectById
-router.get('/:id', async(req,res)=>{
+router.get('/api/productos/:id', async(req,res)=>{
     var buscar= await Producto.findById(req.params.id);
     res.json(buscar);
 });
 
+router.get('/',(req,res)=>{
+    
+    //res.sendFile(path.join(__dirname, 'public/productos.html'));
+    res.send('aqui de ir login a')
+});
 module.exports=router;

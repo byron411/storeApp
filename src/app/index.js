@@ -2,8 +2,8 @@
 import React, {Component} from 'react';
 import { render } from 'react-dom';
 
-import App from './App';
+import Login from './components/Login';
 
 
 
-render (<App />, document.getElementById('app'));
+render (<Login />, document.getElementById('app'));
