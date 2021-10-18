@@ -1,4 +1,3 @@
-//Importamos mongoose para la conexión con MondgoDB en local
 const mongoose=require('mongoose');
 
 //Se conecta a la base de datos 'saleapp' si no existe la crea

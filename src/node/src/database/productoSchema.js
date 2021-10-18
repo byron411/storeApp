@@ -1,4 +1,3 @@
-//Importamos mongoose para crear un esquema
 const mongoose=require('mongoose');
 
 //Utilizamos modulo Schema de mongoose para difinir una tabla u objeto Json
