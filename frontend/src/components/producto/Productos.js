@@ -75,11 +75,6 @@ class Productos extends React.Component{
         console.log('vamos hacer el PUT al objeto con id ', producto._id, ' esta url ', this.URL_PRODUCTOS+'/'+producto._id);
         console.log({descripcion:producto.descripcion, valor_unitario:producto.valor_unitario, estado:producto.estado});
         axios.put(this.URL_PRODUCTOS+'/'+producto._id,producto,{descripcion:producto.descripcion, valor_unitario:producto.valor_unitario, estado:producto.estado});
-        //axios.put(this.URL_PRODUCTOS)
-        /*axios.put(this.URL_PRODUCTOS+'/'+producto._id,{...producto, _id:null});
-        this.componentDidMount();
-        this.limpiarFormulario();
-        //console.log(this.URL_PRODUCTOS+'/'+producto._id);*/
       }
        // console.log('vamos a guardar un producto');
     }
@@ -88,8 +83,27 @@ class Productos extends React.Component{
     *necesita ser registrada this.bind
     */
     cambiosFormulario(nuevoEstado){
-      console.log('hola cambio',nuevoEstado);
-      this.setState({productoSeleccionado:nuevoEstado});
+      console.log(nuevoEstado._id);
+      let recibido={};//{descripcion:nuevoEstado.descripcion,valor_unitario:nuevoEstado.valor_unitario,estado:0};
+      let verificacion=Number;
+      if (nuevoEstado.estado===''){
+        verificacion=0;
+      }
+      else{
+        verificacion=parseInt(nuevoEstado.estado);
+      }
+      if (verificacion>0){
+        recibido={_id:-1,descripcion:nuevoEstado.descripcion,valor_unitario:nuevoEstado.valor_unitario,estado:1}
+        this.setState({productoSeleccionado:recibido})
+        console.log(recibido);
+      }
+      else{
+        recibido={_id:-1,descripcion:nuevoEstado.descripcion,valor_unitario:nuevoEstado.valor_unitario,estado:0}
+        this.setState({productoSeleccionado:recibido})
+        console.log(recibido);
+      }
+      /*console.log('hola cambio',nuevoEstado);
+      this.setState({productoSeleccionado:nuevoEstado});*/
     }
     render(){
         return(

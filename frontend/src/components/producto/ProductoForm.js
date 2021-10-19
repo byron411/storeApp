@@ -33,13 +33,13 @@ class ProductoForm extends React.Component{
                       value={producto.valor_unitario} 
                       onChange={(evt)=>this.props.cambiosFormulario({ ...producto, valor_unitario: evt.target.value})}></input>
                   </div>
+                  
                   <div>
-                      <label>Estado</label>
-                      <input type="text" 
-                      value={producto.estado} 
-                      onChange={(evt)=>this.props.cambiosFormulario({ ...producto, estado:evt.target.value})}></input>
-                      
-                      
+                  <label>Estado</label>
+                      <select onChange={(evt)=>this.props.cambiosFormulario({ ...producto, estado:evt.target.value})}>
+                          <option value="0">Agotado</option>
+                          <option value="1">Disponible</option>
+                      </select>
                   </div>
                   <input className="btn light-blue darken-4" type='submit' value={producto._id !== -1 ? 'Editar':'Crear'} />
                   <input className="btn light-blue darken-4" style={{margin:'4px'}}  type='button' value="Limpiar" onClick={this.props.limpiarFormulario}/>
