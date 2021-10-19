@@ -2,7 +2,7 @@ POST http://localhost:5000/productos/ HTTP/1.1
 content-type: application/json
 
 {
-    "descripcion": "Producto7",
+    "descripcion": "Producto75",
     "valor_unitario": 9999,
     "estado": 0
 }

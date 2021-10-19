@@ -1,9 +1,10 @@
 const express=require('express');
 const productoRouter = express.Router();
 //const productoController=require('../controllers/productosController');
+const producto= require('../database/productoSchema');
 
 
-productoRouter.route('/').get().post();
+//productoRouter.route('/').get().post();
 
 
 //Select *
@@ -14,12 +15,11 @@ productoRouter.get('/',async(req,res)=>{
 });
 
 //Insert
-productoRouter.post=('/',async(req,res)=>{
-       
-    var {descripcion,valor_unitario, estado}=req.body;
-    var nuevatarea= new producto({descripcion, valor_unitario,estado});
-    nuevatarea.save();
-    res.json({"status":"guardado"});
+productoRouter.post('/',(req,res)=>{
+    //res.send("hola");
+    const objeto=req.body;
+    producto.create(objeto);
+    res.json({Msg:'creado'});
 });
 
 //Update

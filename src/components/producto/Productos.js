@@ -52,6 +52,7 @@ class Productos extends React.Component{
     limpiarFormulario(){
       this.setState({productoSeleccionado:this.producto_vacio});
     }
+    //funcion para guardar un objeto producto
     saveProducto(evt){
       const producto=this.state.productoSeleccionado;
       if(producto.descripcion ==="" || producto.valor_unitario===""){
@@ -71,10 +72,14 @@ class Productos extends React.Component{
         });
       }
       else{
-        axios.put(this.URL_PRODUCTOS+'/'+producto._id,producto);
+        console.log('vamos hacer el PUT al objeto con id ', producto._id, ' esta url ', this.URL_PRODUCTOS+'/'+producto._id);
+        console.log({descripcion:producto.descripcion, valor_unitario:producto.valor_unitario, estado:producto.estado});
+        axios.put(this.URL_PRODUCTOS+'/'+producto._id,producto,{descripcion:producto.descripcion, valor_unitario:producto.valor_unitario, estado:producto.estado});
+        //axios.put(this.URL_PRODUCTOS)
+        /*axios.put(this.URL_PRODUCTOS+'/'+producto._id,{...producto, _id:null});
         this.componentDidMount();
         this.limpiarFormulario();
-        //console.log(this.URL_PRODUCTOS+'/'+producto._id);
+        //console.log(this.URL_PRODUCTOS+'/'+producto._id);*/
       }
        // console.log('vamos a guardar un producto');
     }

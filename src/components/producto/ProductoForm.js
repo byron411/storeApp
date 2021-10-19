@@ -41,7 +41,7 @@ class ProductoForm extends React.Component{
                       
                       
                   </div>
-                  <input className="btn light-blue darken-4" type='submit' value={producto._id != -1 ? 'Editar':'Crear'} />
+                  <input className="btn light-blue darken-4" type='submit' value={producto._id !== -1 ? 'Editar':'Crear'} />
                   <input className="btn light-blue darken-4" style={{margin:'4px'}}  type='button' value="Limpiar" onClick={this.props.limpiarFormulario}/>
               </form>
                                     </div>
