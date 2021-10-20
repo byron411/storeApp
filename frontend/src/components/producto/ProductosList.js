@@ -1,7 +1,9 @@
 import React from 'react';
+
 class ProductosList extends React.Component{
     render(){
         const productos=this.props.productos;
+        console.log(typeof(productos));
         const productoRow=productos.map((st, index)=>{
             var nuevoEstado="";
             if (st.estado===false){

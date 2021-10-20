@@ -1,4 +1,5 @@
 import React from 'react';
+import M from 'materialize-css/dist/js/materialize.min.js';
 class ProductoForm extends React.Component{
     descripcionCambio=(evt)=>{
         const producto=this.props.producto;
@@ -8,6 +9,10 @@ class ProductoForm extends React.Component{
 
     }
     render(){
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+          });
         const producto=this.props.producto;
 
         return(
@@ -15,7 +20,7 @@ class ProductoForm extends React.Component{
 
 
 
-<div className="container">
+<div className="container" style={{width:'100%'}}>
                         <div className="row">
                             <div className="col s5">
                                 <div className="card">
@@ -36,13 +41,17 @@ class ProductoForm extends React.Component{
                   
                   <div>
                   <label>Estado</label>
-                      <select onChange={(evt)=>this.props.cambiosFormulario({ ...producto, estado:evt.target.value})}>
+                      <select id="estado_producto" onChange={(evt)=>this.props.cambiosFormulario({ ...producto, estado:evt.target.value})}>
                           <option value="0">Agotado</option>
                           <option value="1">Disponible</option>
                       </select>
                   </div>
-                  <input className="btn light-blue darken-4" type='submit' value={producto._id !== -1 ? 'Editar':'Crear'} />
+                  <div>
+                  <input className="btn light-blue darken-4" type='submit' value="Crear" style={{margin:'4px'}}/>
+                  </div>
+                  <div>
                   <input className="btn light-blue darken-4" style={{margin:'4px'}}  type='button' value="Limpiar" onClick={this.props.limpiarFormulario}/>
+                  </div>
               </form>
                                     </div>
                                 </div>

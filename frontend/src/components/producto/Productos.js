@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import ProductoForm from "./ProductoForm";
 import ProductosList from "./ProductosList";
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 
 class Productos extends React.Component{
@@ -18,6 +19,7 @@ class Productos extends React.Component{
         this.deleteProducto=this.deleteProducto.bind(this);
         this.limpiarFormulario=this.limpiarFormulario.bind(this);
         this.saveProducto=this.saveProducto.bind(this);
+        
       }
 
     //Conectar a backend
@@ -46,7 +48,13 @@ class Productos extends React.Component{
     deleteProducto(_id){
       //console.log('quiero delete un estudiante'+_id);
       axios.delete(this.URL_PRODUCTOS+'/'+_id);
-      this.componentDidMount();
+      //this.componentDidMount();
+      axios.get(this.URL_PRODUCTOS).then((respuesta)=>{
+        this.setState({productos:respuesta.data})
+        M.toast({html:'Producto eliminado'});
+        }).catch(err=>{
+          console.log('hubo un error listando los productos', err);
+        });
   }
   
     limpiarFormulario(){
@@ -67,6 +75,7 @@ class Productos extends React.Component{
             this.componentDidMount();
             this.limpiarFormulario();
             console.log('todo bien con el post',res,producto);
+            M.toast({html:"Producto agregado"});
         }).catch(err=>{
           console.log('Error al hacer post',err);
         });
@@ -75,6 +84,10 @@ class Productos extends React.Component{
         console.log('vamos hacer el PUT al objeto con id ', producto._id, ' esta url ', this.URL_PRODUCTOS+'/'+producto._id);
         console.log({descripcion:producto.descripcion, valor_unitario:producto.valor_unitario, estado:producto.estado});
         axios.put(this.URL_PRODUCTOS+'/'+producto._id,producto,{descripcion:producto.descripcion, valor_unitario:producto.valor_unitario, estado:producto.estado});
+        this.componentDidMount();
+        this.limpiarFormulario();
+        M.toast({html:"Producto Modificado"});
+
       }
        // console.log('vamos a guardar un producto');
     }
@@ -83,16 +96,20 @@ class Productos extends React.Component{
     *necesita ser registrada this.bind
     */
     cambiosFormulario(nuevoEstado){
+      var combo=document.getElementById("estado_producto");
+      var seleccionado=combo.options[combo.selectedIndex].text;
+      var asignar=Number;
+      console.log(seleccionado);
       console.log(nuevoEstado._id);
       let recibido={};//{descripcion:nuevoEstado.descripcion,valor_unitario:nuevoEstado.valor_unitario,estado:0};
       let verificacion=Number;
-      if (nuevoEstado.estado===''){
-        verificacion=0;
+      if (seleccionado==='Agotado'){
+        asignar=0;
       }
       else{
-        verificacion=parseInt(nuevoEstado.estado);
+        asignar=1;
       }
-      if (verificacion>0){
+      if (asignar>0){
         recibido={_id:-1,descripcion:nuevoEstado.descripcion,valor_unitario:nuevoEstado.valor_unitario,estado:1}
         this.setState({productoSeleccionado:recibido})
         console.log(recibido);
@@ -105,6 +122,9 @@ class Productos extends React.Component{
       /*console.log('hola cambio',nuevoEstado);
       this.setState({productoSeleccionado:nuevoEstado});*/
     }
+
+    
+  
     render(){
         return(
             <div className="container">
