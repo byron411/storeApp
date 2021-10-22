@@ -1,8 +1,13 @@
 const express = require('express');
 const cors= require('cors');
 const app = express();
+
+
+//Middlewo
 app.use(express.json());
 app.use(cors());
+
+
 const mongoose=require('./database/conexion');
 //const { createIndexes } = require('./database/productoSchema');
 

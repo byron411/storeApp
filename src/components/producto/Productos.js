@@ -24,7 +24,12 @@ class Productos extends React.Component{
 
     //Conectar a backend
     componentDidMount(){
-    axios.get(this.URL_PRODUCTOS).then((respuesta)=>{
+      
+    axios.get(this.URL_PRODUCTOS, {
+      headers:{
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYxNzJmMzk5Zjc5ZWQ3ZmJjMzIxYjYxYSIsImVtYWlsIjoiYnJudHJqQGdtYWlsLmNvbSIsIl9fdiI6MCwiYWRtaW4iOmZhbHNlLCJuYW1lIjoiQnlyb24gVHJlam8ifSwiaWF0IjoxNjM0OTMxODA2LCJleHAiOjE2MzQ5MzU0MDZ9.OEp7mk8MHbawJyxlVnfD1QayBEPDr6peizr30b8wycc"
+      }
+    }).then((respuesta)=>{
     console.log('Este es la respuesta de listar productos',respuesta);
     //console.log('Este es solo el estado',respuesta.data.estado);
     this.setState({productos:respuesta.data})

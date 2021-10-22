@@ -21,7 +21,7 @@ googleAuth=(req,res)=>{
         return usuariomodelo.findOneAndUpdate({email: email},{name:name},{new:true, upsert:true});
    }).then(usuario=>{
        console.log(usuario);
-       const appToken=jwt.sign({user:usuario}, JWT_KEY);
+       const appToken=jwt.sign({user:usuario}, JWT_KEY, {expiresIn:'1h'});
        res.json(appToken);
    })
    .catch(err=>{

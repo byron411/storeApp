@@ -3,8 +3,11 @@ const productoRouter = express.Router();
 //const productoController=require('../controllers/productosController');
 //const producto= require('../database/productoSchema');
 const productoController= require('../controllers/productosController')
+const tokenMiddleware = require('../middlewares/tokenMiddleware');
 
 
+//antes de pasar a las rutas pasa por la verificación del token
+productoRouter.use(tokenMiddleware.verifyToken);
 
 productoRouter.route('/').get(productoController.listarProductos).
 post(productoController.agregarProducto);
