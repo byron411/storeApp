@@ -1,0 +1,47 @@
+POST http://localhost:5000/productos/ HTTP/1.1
+content-type: application/json
+
+{
+    "descripcion": "Producto75",
+    "valor_unitario": 9999,
+    "estado": 0
+}
+
+###
+
+GET http://localhost:5000/productos/ HTTP/1.1
+
+###
+
+PUT http://localhost:5000/productos/616cb577687e055c5f766be0
+content-type: application/json
+{
+    "descripcion": "Producto7ModificadoDESDEREST",
+    "valor_unitario": 9999,
+    "estado": 1
+}
+
+###
+DELETE http://localhost:5000/productos/616b8a170b484eb16cb26afa
+
+
+###
+
+GET http://localhost:5000/productos/61685b43c423e301ac4c71cf HTTP/1.1
+
+###
+POST http://localhost:5000/usuarios/ HTTP/1.1
+content-type: application/json
+
+{
+    "email": "brntrj@gmail.com",
+    "admin": 0
+}
+
+###
+POST http://localhost:5000/auth/google HTTP/1.1
+content-type: application/json
+
+{
+    "email": "brntrj@gmail.com"
+}
