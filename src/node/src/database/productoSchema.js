@@ -12,7 +12,7 @@ const {Schema}=mongoose;
 const ProductoSchema=new Schema({
     descripcion:{type:String, required:true},
     valor_unitario:{type:Number, required:true},
-    estado:{type:Boolean, required:true}    
+    estado:{type:Boolean, default:1}    
 });
 
 module.exports=mongoose.model('Producto',ProductoSchema);

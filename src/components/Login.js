@@ -7,7 +7,7 @@ export class Login extends React.Component{
             axios.post('http://localhost:5000/auth/google',{"token": googleResp.tokenId})
             .then(resp=>{
                 console.log('todo bien este es el token',resp.data)
-                sessionStorage.setItem('token',JSON.stringify(resp.data));
+                sessionStorage.setItem('token',resp.data);
             })
             .catch(err=>console.log('hubo error', err))
     }

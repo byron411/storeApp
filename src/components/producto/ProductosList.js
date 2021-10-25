@@ -3,6 +3,7 @@ import React from 'react';
 class ProductosList extends React.Component{
     render(){
         const productos=this.props.productos;
+        
         console.log(typeof(productos));
         const productoRow=productos.map((st, index)=>{
             var nuevoEstado="";
@@ -19,9 +20,9 @@ class ProductosList extends React.Component{
                         <td>{st.valor_unitario}</td>
                         <td>{nuevoEstado}</td>
                         <td><button
-                         
+                         className="btn light-blue darken-4"
                         type="button" 
-                        onClick={()=>this.props.editarProducto(st, st.estado)}
+                        onClick={()=>this.props.editarProducto({_id:st._id,descripcion:st.descripcion,valor_unitario:st.valor_unitario,estado:st.estado})}
                         ><i className="material-icons">edit</i></button></td>
                     <td><button 
                     className="btn light-blue darken-4"

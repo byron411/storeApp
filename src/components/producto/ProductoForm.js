@@ -14,7 +14,9 @@ class ProductoForm extends React.Component{
             M.FormSelect.init(elems);
           });
         const producto=this.props.producto;
-
+        //console.log('quiero veer el combobox',producto.estado,'nada');
+        //console.log('quiero veer el txt descripcion',producto.descripcion,'nada');
+        
         return(
             <div onSubmit={this.props.saveProducto}>
 
@@ -41,13 +43,17 @@ class ProductoForm extends React.Component{
                   
                   <div>
                   <label>Estado</label>
-                      <select id="estado_producto" onChange={(evt)=>this.props.cambiosFormulario({ ...producto, estado:evt.target.value})}>
-                          <option value="0">Agotado</option>
-                          <option value="1">Disponible</option>
+                      <select id="estado_producto" 
+                      
+                      onChange={(evt)=>this.props.cambiosFormulario({ ...producto, estado:evt.target.value})}>
+                            <option value="true">Disponible</option>
+                          <option value="false" >Agotado</option>
+                          
+                          
                       </select>
                   </div>
                   <div>
-                  <input className="btn light-blue darken-4" type='submit' value="Crear" style={{margin:'4px'}}/>
+                  <input className="btn light-blue darken-4" type='submit' value={producto._id !== false ? 'Editar':'Crear'} style={{margin:'4px'}}/>
                   </div>
                   <div>
                   <input className="btn light-blue darken-4" style={{margin:'4px'}}  type='button' value="Limpiar" onClick={this.props.limpiarFormulario}/>
