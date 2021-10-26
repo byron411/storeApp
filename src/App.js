@@ -37,7 +37,7 @@ class App extends React.Component {
     else if(window.location.pathname==='/productos'){
       console.log('debemos mostrar los pruductos');
     }*/
-    let mostrar=<div>Página incorrecta</div>;
+    let mostrar='';
     if(this.state.isUsuariosVisible){
       window.history.pushState({},'','/usuarios');
       mostrar=<Usuarios />;
@@ -52,16 +52,7 @@ class App extends React.Component {
 
       <div className="container">
       
-      <div>
-        <nav className="light-blue darken-4">
-          <div className="container">
-            <a className="brand-logo" href='/productos'>Productos</a>
-          </div>
-          <div>
-            <a className="brand-logo" href='/usuarios'>Usuarios</a>
-          </div>
-        </nav>
-      </div>
+      
        <div>
             
             {mostrar}

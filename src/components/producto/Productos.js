@@ -3,6 +3,7 @@ import axios from "axios";
 import ProductoForm from "./ProductoForm";
 import ProductosList from "./ProductosList";
 import M from 'materialize-css/dist/js/materialize.min.js';
+import { Cabecera } from "../Cabecera";
 
 
 class Productos extends React.Component{
@@ -153,8 +154,12 @@ class Productos extends React.Component{
     
   
     render(){
+
         return(
+          <div>
+            <Cabecera />
             <div className="container">
+            
           <ProductosList productos={this.state.productos} 
           editarProducto={this.editarProducto} deleteProducto={this.deleteProducto}/>
           <ProductoForm 
@@ -163,6 +168,7 @@ class Productos extends React.Component{
           limpiarFormulario={this.limpiarFormulario}
           saveProducto={this.saveProducto}
           />
+      </div>
       </div>
         );
     }

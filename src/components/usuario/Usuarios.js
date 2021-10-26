@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import UsuariosList from "./UsuariosList";
 import M from 'materialize-css/dist/js/materialize.min.js';
+import { Cabecera } from "../Cabecera";
 
 class Usuarios extends React.Component{
     //-----------------------------------------------------
@@ -99,6 +100,7 @@ class Usuarios extends React.Component{
     render(){
         return(
             <div>
+                <Cabecera />
                 <UsuariosList usuarios={this.state.usuarios} cargarFormulario={this.cargarFormulario} admin={this.state.admin} editarUsuario={this.editarUsuario} name={this.state.name} eliminarUsuario={this.eliminarUsuario}/>
                 
             </div>

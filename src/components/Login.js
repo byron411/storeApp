@@ -6,6 +6,7 @@ export class Login extends React.Component{
             console.log(googleResp);
             axios.post('http://localhost:5000/auth/google',{"token": googleResp.tokenId})
             .then(resp=>{
+                window.location.assign('http://localhost:3000/productos');
                 console.log('todo bien este es el token',resp.data)
                 sessionStorage.setItem('token',resp.data);
             })
@@ -16,7 +17,7 @@ export class Login extends React.Component{
                 
                     <GoogleLogin
     clientId="236842425131-insapaglakr212inlhpfdvc01thnotri.apps.googleusercontent.com"
-    buttonText="Login"
+    buttonText="Acceder con Google"
     onSuccess={this.responseGoogle}
     onFailure={this.responseGoogle}
     cookiePolicy={'single_host_origin'}

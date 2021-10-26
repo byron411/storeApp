@@ -8,6 +8,9 @@ verifyToken=(req,res, next)=>{
             res.status(401).send('No autorizado');
             return;
         }
+        else{
+            console.log('ir a productos');
+        }
         console.log(decoded)
     });
     next();

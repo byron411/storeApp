@@ -28,18 +28,6 @@ app.use('/auth',authRouter);
 
 
 
-
-
-
-
-//---------------------------------------se va----------------------
-//Select de usuario
-app.get('/usuarios',async(req,res)=>{
-    res.json({mensaje:"aquí listar usuarios"});
-});
-
-
-
 //SErvidor en el pueto 5000
 app.listen(5000,()=>{
     console.log('Ya esta el servidor corriendo');
