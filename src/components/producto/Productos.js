@@ -4,6 +4,7 @@ import ProductoForm from "./ProductoForm";
 import ProductosList from "./ProductosList";
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Cabecera } from "../Cabecera";
+import { Footer } from "../Footer";
 
 
 class Productos extends React.Component{
@@ -27,16 +28,17 @@ class Productos extends React.Component{
     //Conectar a backend
     componentDidMount(){
       
-    axios.get(this.URL_PRODUCTOS, {
-      headers:{
-        token: sessionStorage.getItem('token')
-      }}).then((respuesta)=>{
-    console.log('Este es la respuesta de listar productos',respuesta);
-    //console.log('Este es solo el estado',respuesta.data.estado);
-    this.setState({productos:respuesta.data})
-    }).catch(err=>{
-      console.log('hubo un error listando los productos', err);
-    });
+        axios.get(this.URL_PRODUCTOS, {
+          headers:{
+            token: sessionStorage.getItem('token')
+          }}).then((respuesta)=>{
+        console.log('Este es la respuesta de listar productos',respuesta);
+        //console.log('Este es solo el estado',respuesta.data.estado);
+        this.setState({productos:respuesta.data})
+        }).catch(err=>{
+          M.toast({html:'Por favor inicie su sesión'});
+          console.log('hubo un error listando los productos', err);
+        });
 }
     editarProducto(producto){
         this.setState({productoSeleccionado:producto});
@@ -47,24 +49,24 @@ class Productos extends React.Component{
   
     deleteProducto(_id){
       //console.log('quiero delete un estudiante'+_id);
+      if(sessionStorage.getItem('token')){
       //eslint-disable-next-line no-restricted-globals
       if(confirm('¿Seguro desea eliminar?')){
       axios.delete(this.URL_PRODUCTOS+'/'+_id, {
         headers:{
           token: sessionStorage.getItem('token')
-        }});
-      this.componentDidMount();
-      M.toast({html:'Producto eliminado'});
-      this.componentDidMount();
-      /*axios.get(this.URL_PRODUCTOS, {
-        headers:{
-          token: sessionStorage.getItem('token')
-        }}).then((respuesta)=>{
-        this.setState({productos:respuesta.data})
-        M.toast({html:'Producto eliminado'});
-        }).catch(err=>{
-          console.log('hubo un error listando los productos', err);
-        });*/
+        }})
+        .then((res)=>{
+          this.componentDidMount();
+          M.toast({html:'Producto eliminado'});
+          this.componentDidMount();
+        })
+        .catch(err=>{
+          console.log('debe iniciar sesion');
+          M.toast({html:'Error eliminando'});
+        });     
+  }}else{
+    M.toast({html:'Por favor inicie sesión'});
   }}
   
     limpiarFormulario(){
@@ -72,6 +74,7 @@ class Productos extends React.Component{
     }
     //funcion para guardar un objeto producto
     saveProducto(evt){
+      if(sessionStorage.getItem('token')){
       const producto=this.state.productoSeleccionado;
       if(producto.descripcion ==="" || producto.valor_unitario===""){
         document.write('Error en el formulario');
@@ -114,39 +117,15 @@ class Productos extends React.Component{
       }
        // console.log('vamos a guardar un producto');
     }
+    else{
+      M.toast({html:'Por favor inicie sesión'});
+    }
+    }
     /*Esta función es obligatorio en formularios, se solicita definir una función
     *cuando se vaya a cambiar algo en un formulario
     *necesita ser registrada this.bind
     */
-    cambiosFormulario(nuevoEstado){
-      /*var combo=document.getElementById("estado_producto");
-      var seleccionado=combo.options[combo.selectedIndex].text;
-      var asignar=Number;
-      console.log(seleccionado);
-      console.log(nuevoEstado._id);
-      let recibido={};//{descripcion:nuevoEstado.descripcion,valor_unitario:nuevoEstado.valor_unitario,estado:0};
-      
-      if (seleccionado==='Agotado'){
-        asignar=0;
-      }
-      else{
-        asignar=1;
-      }
-      if (asignar>0){
-        recibido={_id:true,descripcion:nuevoEstado.descripcion,valor_unitario:nuevoEstado.valor_unitario,estado:1}
-        this.setState({productoSeleccionado:recibido})
-        console.log(recibido);
-      }
-      else{
-        recibido={_id:true,descripcion:nuevoEstado.descripcion,valor_unitario:nuevoEstado.valor_unitario,estado:0}
-        this.setState({productoSeleccionado:recibido})
-        console.log(recibido);
-      }
-      /*console.log('hola cambio',nuevoEstado);
-      this.setState({productoSeleccionado:nuevoEstado});*/
-
-      
-
+    cambiosFormulario(nuevoEstado){    
       console.log('este print esta en Producto.js cambiosFormulario',nuevoEstado);
       this.setState({productoSeleccionado:nuevoEstado});
     }
@@ -168,6 +147,9 @@ class Productos extends React.Component{
           limpiarFormulario={this.limpiarFormulario}
           saveProducto={this.saveProducto}
           />
+      </div>
+      <div>
+        <Footer />
       </div>
       </div>
         );
