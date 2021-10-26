@@ -23,6 +23,8 @@ class ProductoForm extends React.Component{
 
 
 <div className="container" style={{width:'100%'}}>
+
+<h5>Crear/Editar</h5>
                         <div className="row">
                             <div className="col s5">
                                 <div className="card">

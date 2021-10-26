@@ -35,6 +35,7 @@ class ProductosList extends React.Component{
         return(
             <div>
                 <div>
+                <h5>Lista productos</h5>
                         <table>
                         <thead>
                             <tr>

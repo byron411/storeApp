@@ -89,7 +89,7 @@ class Productos extends React.Component{
             token: sessionStorage.getItem('token')
           }}).then((res)=>{
             this.componentDidMount();
-            //this.limpiarFormulario();
+            this.limpiarFormulario();
             console.log('todo bien con el post',res,producto);
             M.toast({html:"Producto agregado"});
             this.componentDidMount();
@@ -104,7 +104,7 @@ class Productos extends React.Component{
             token: sessionStorage.getItem('token')
           }});
           this.componentDidMount();
-          
+          this.limpiarFormulario();
           M.toast({html:'Producto modificado'});
           this.componentDidMount();
          
