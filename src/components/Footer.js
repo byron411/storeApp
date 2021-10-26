@@ -12,7 +12,6 @@ export class Footer extends React.Component{
                 <p className="grey-text text-lighten-4">Proyecto desarrollado con metodología Scrum del programa Misión TIC 2022</p>
               </div>
               <div className="col l4 offset-l2 s12">
-                <h5 className="white-text"></h5>
                 <ul>
                  
                 </ul>

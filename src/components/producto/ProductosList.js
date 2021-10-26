@@ -17,7 +17,7 @@ class ProductosList extends React.Component{
                 <tr key={index}>
                         <td>{st._id}</td>
                         <td>{st.descripcion}</td>
-                        <td>{st.valor_unitario}</td>
+                        <td>{new Intl.NumberFormat("co-CO",{style:"currency",currency:"COP"}).format(st.valor_unitario)}</td>
                         <td>{nuevoEstado}</td>
                         <td><button
                          className="btn light-blue darken-4"

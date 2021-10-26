@@ -34,13 +34,16 @@ class Usuarios extends React.Component{
     
 
     cargarUsuarios(){
-        axios.get(this.URL_USUARIOS)
+        axios.get(this.URL_USUARIOS, {
+            headers:{token: sessionStorage.getItem('token')}
+        })
         .then(res=>{
             this.setState({usuarios:res.data})
             //console.log('usuairos desde el metodo cargar',this.state.usuarios);
         })
         .catch(err=>{
             console.log(err);
+            M.toast({html:'Por favor inicie su sesión'})
         });
     }
 
@@ -64,39 +67,53 @@ class Usuarios extends React.Component{
             M.toast({html:'No puede editar a un super admin'})
         }
         else{
-        axios.put(this.URL_USUARIOS+'/'+id,{admin:valor})
-        .then(res=>{
-            M.toast({html:"Modificado"});
-            this.cargarUsuarios();
-        })
-        .catch(err=>{
-            M.toast({html:"Selecione usuario"})
-        })
+            if(sessionStorage.getItem('token')){
+                axios.put(this.URL_USUARIOS+'/'+id,{admin:valor}, {
+                    headers:{token: sessionStorage.getItem('token')}
+                })
+                .then(res=>{
+                    M.toast({html:"Modificado"});
+                    this.cargarUsuarios();
+                })
+                .catch(err=>{
+                    M.toast({html:"Selecione usuario"})
+                })
+            }
+            else{
+                M.toast({html:'Por favor inicie su sesión'});
+            }
     }}
 
     eliminarUsuario(pId){
-        
-
-
         console.log('va a eliminar el usuario',pId);
-        if(pId==='6172f399f79ed7fbc321b61a'){
-            M.toast({html:'No puede eliminar a un super admin'})
+        if(sessionStorage.getItem('token')){
+            if(pId==='6172f399f79ed7fbc321b61a'){
+                M.toast({html:'No puede eliminar a un super admin'})
+            }
+            else{
+                //eslint-disable-next-line no-restricted-globals
+                if(confirm('eliminar?')){
+                    console.log('eliminando...');
+            
+                axios.delete(this.URL_USUARIOS+'/'+pId, {
+                    headers:{token: sessionStorage.getItem('token')}
+                })
+                .then(res=>{
+                    M.toast({html:"Eliminado"});
+                    this.cargarUsuarios();
+                })
+                .catch(err=>{
+                    M.toast({html:'Error borrando usuario'});
+                })}
+            }
         }
         else{
-            //eslint-disable-next-line no-restricted-globals
-            if(confirm('eliminar?')){
-                console.log('eliminando...');
-        
-            axios.delete(this.URL_USUARIOS+'/'+pId)
-            .then(res=>{
-                M.toast({html:"Eliminado"});
-                this.cargarUsuarios();
-            })
-            .catch(err=>{
-                M.toast({html:'Error borrando usuario'});
-            })}
+            M.toast({html:'Por favor inicie sesión'});
         }
     }
+        
+            
+    
     
     render(){
         return(
