@@ -26,7 +26,8 @@ class UsuariosList extends React.Component{
                     </button>
                 </td>
                 <td>
-                    <button className="btn light-blue darken-4" type="button" >
+                    <button className="btn light-blue darken-4" type="button" 
+                    onClick={()=>this.props.eliminarUsuario(i._id)}>
                         <i className="material-icons">delete</i>
                     </button>
                 </td>
@@ -40,10 +41,11 @@ class UsuariosList extends React.Component{
                             <div className="col s5">
                                 <div className="card">
                                     <div className="card-content">
+                                    <h5>Cambiar Rol</h5>
                                         <form onSubmit={this.props.editarUsuario}>
                                             <div className="row">
-                                                <div>
-                                                    <input type="text" disabled value={name} />
+                                                <div className="input-field col s12">
+                                                    <input type="text" disabled value={name} placeholder="Nombre"></input>
                                                 </div>
                                                 <div className="input-field col s12">
                                                 <label>¿Actualmente es admin?</label>
@@ -69,6 +71,7 @@ class UsuariosList extends React.Component{
                             </div>
                             <div className="col s7">
                                 <table>
+                                <caption>Lista de Usuarios</caption>
                                     <thead>
                                         <tr>
                                             <th>Nombres</th>

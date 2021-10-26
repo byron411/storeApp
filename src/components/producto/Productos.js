@@ -46,6 +46,8 @@ class Productos extends React.Component{
   
     deleteProducto(_id){
       //console.log('quiero delete un estudiante'+_id);
+      //eslint-disable-next-line no-restricted-globals
+      if(confirm('¿Seguro desea eliminar?')){
       axios.delete(this.URL_PRODUCTOS+'/'+_id, {
         headers:{
           token: sessionStorage.getItem('token')
@@ -62,7 +64,7 @@ class Productos extends React.Component{
         }).catch(err=>{
           console.log('hubo un error listando los productos', err);
         });*/
-  }
+  }}
   
     limpiarFormulario(){
       this.setState({productoSeleccionado:this.producto_vacio});
