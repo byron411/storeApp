@@ -4,23 +4,32 @@ export class Footer extends React.Component{
     render(){
         return(
             
-                <footer className="light-blue darken-4" >
-          <div className="container">
-            <div className="row">
-              <div className="col l6 s12">
-                <h5 className="white-text">Cloud Programmers</h5>
-                <p className="grey-text text-lighten-4">Proyecto desarrollado con metodología Scrum del programa Misión TIC 2022</p>
+          <footer class="page-footer   blue-grey darken-4">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="blue-text">AdminSales</h5>
+                <p class="grey-text text-lighten-4">brntrj@gmail.com</p>
+      
+      
               </div>
-              <div className="col l4 offset-l2 s12">
+              <div class="col l3 s12">
+                <h5 class="blue-text">Universidad de Antioquia</h5>
                 <ul>
-                 
+                  <li><a class="white-text" href="https://www.misiontic2022.gov.co/portal/">Misión TIC 2022</a></li>
+                  <li><a class="white-text" href="https://www.udea.edu.co/wps/portal/udea/web/inicio/unidades-academicas/ingenieria">Faculta de ingenieria</a></li>
+                  
                 </ul>
+              </div>
+              <div class="col l3 s12">
+                <h5 class="blue-text">Cloud Programmers</h5>
+                
               </div>
             </div>
           </div>
-          <div className="footer-copyright">
-            <div className="container">
-            <h6 className="white-text">© 2021 Copyright Text</h6>
+          <div class="footer-copyright">
+            <div class="container">
+            Made by <a class="blue-text text-lighten-3" href="/">Cloud Programmers © 2021 Copyright Text</a>
             </div>
           </div>
         </footer>

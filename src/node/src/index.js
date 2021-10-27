@@ -25,6 +25,10 @@ app.use('/usuarios',usuariosRouter);
 const authRouter=require('./routes/authRouter');
 app.use('/auth',authRouter);
 
+//ventas
+const ventasRouter=require('./routes/ventasRouter');
+app.use('/ventas',ventasRouter);
+
 
 
 

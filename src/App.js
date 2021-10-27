@@ -3,6 +3,7 @@ import './App.css';
 import Productos from './components/producto/Productos';
 import Usuarios from './components/usuario/Usuarios';
 import {Login} from './components/Login';
+import { Ventas } from './components/Ventas';
 
 class App extends React.Component {
   state={
@@ -35,6 +36,7 @@ class App extends React.Component {
     this.setState({isUsuariosVisible:false, isProductosVisible:false, isInicioVisible:true})
   }
   render(){
+    
     console.log(window.location.pathname);
     /*if(window.location.pathname==='/usuarios'){
       console.log('debemos mostrar los usuairos')
