@@ -14,15 +14,12 @@ export class Login extends React.Component{
     }
     render(){
         return(
-                
-                    <GoogleLogin
+    <GoogleLogin
     clientId="236842425131-insapaglakr212inlhpfdvc01thnotri.apps.googleusercontent.com"
     buttonText="Acceder con Google"
     onSuccess={this.responseGoogle}
     onFailure={this.responseGoogle}
-    cookiePolicy={'single_host_origin'}
-  />
-            
+    cookiePolicy={'single_host_origin'}/>    
         );
     }
 }

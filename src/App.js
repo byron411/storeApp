@@ -8,7 +8,8 @@ class App extends React.Component {
   state={
     componenteVisible:'productos',
     isProductosVisible:true,
-    isUsuariosVisible:false
+    isUsuariosVisible:false,
+    isInicioVisible:false,
   }
 
   constructor(props){
@@ -17,17 +18,21 @@ class App extends React.Component {
     this.state={
       //componenteVisible:'productos',
       isProductosVisible:window.location.pathname==='/productos',
-      isUsuariosVisible:window.location.pathname==='/usuarios'
+      isUsuariosVisible:window.location.pathname==='/usuarios',
+      isInicioVisible:window.location.pathname==='/'
     }
   }
 
   showProductos =()=>{
     console.log('mostrar productos');
-    this.setState({isUsuariosVisible:false, isProductosVisible:true})
+    this.setState({isUsuariosVisible:false, isProductosVisible:true, isInicioVisible:false})
   }
   showUsuarios =()=>{
     console.log('mostrar usuarios');
-    this.setState({isUsuariosVisible:true, isProductosVisible:false})
+    this.setState({isUsuariosVisible:true, isProductosVisible:false, isInicioVisible:false})
+  }
+  showInicio=()=>{
+    this.setState({isUsuariosVisible:false, isProductosVisible:false, isInicioVisible:true})
   }
   render(){
     console.log(window.location.pathname);
@@ -46,22 +51,11 @@ class App extends React.Component {
       window.history.pushState({},'','/productos');
       mostrar=<Productos />;
     }
-    return(
-
-      
-
-      <div className="container">
-      
-      
-       <div>
-            
-            {mostrar}
-          </div>
-          <div>
-            <Login />
-          </div>
-      </div>
-    )
+    else if(this.state.isInicioVisible){
+      window.history.pushState({},'','/');
+      mostrar=<Login />;
+    }
+    return(<div>{mostrar}</div>);
   }
 }
   

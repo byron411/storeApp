@@ -16,7 +16,7 @@ export class Cabecera extends React.Component{
         return(
             <div>
             
-                <nav className="light-blue darken-4" id="cabecera">
+                <nav className="light-blue darken-4" id="cabecera" style={{height:'75px'}}>
                     <div >
                     <a href="/" className="brand-logo"><i className="material-icons right">home</i></a>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">

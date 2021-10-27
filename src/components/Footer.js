@@ -3,8 +3,8 @@ import React from "react";
 export class Footer extends React.Component{
     render(){
         return(
-            <div>
-                <footer className="light-blue darken-4">
+            
+                <footer className="light-blue darken-4" >
           <div className="container">
             <div className="row">
               <div className="col l6 s12">
@@ -24,7 +24,7 @@ export class Footer extends React.Component{
             </div>
           </div>
         </footer>
-            </div>
+            
         );
     }
 }

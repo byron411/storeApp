@@ -37,6 +37,8 @@ class UsuariosList extends React.Component{
             
             <div>
                 <div className="container">
+                
+            <h5>Lista usuarios</h5>
                         <div className="row">
                             <div className="col s5">
                                 <div className="card">
