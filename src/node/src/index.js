@@ -6,12 +6,14 @@ const app = express();
 //Middlewo
 app.use(express.json());
 app.use(cors());
-
-if(process.env.NODE_ENV !== 'production'){
+require('dotenv').config();
+/*if(process.env.NODE_ENV !== 'production'){
+    
     console.log('No estamos en producción');
     require('dotenv').config();
     console.log('el proceso putno env:',process.env.PORT);//
-}
+    console.log('variable produ',process.env.NODE_ENV,'ESTA');//
+}*/
 
 const mongoose=require('./database/conexion');
 //const { createIndexes } = require('./database/productoSchema');

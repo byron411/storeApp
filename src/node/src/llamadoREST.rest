@@ -45,3 +45,6 @@ content-type: application/json
 {
     "email": "brntrj@gmail.com"
 }
+
+###
+GET https://shielded-dusk-12858.herokuapp.com/productos HTTP/1.1
