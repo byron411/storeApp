@@ -2,9 +2,9 @@
 //const CLIENT_ID='236842425131-insapaglakr212inlhpfdvc01thnotri.apps.googleusercontent.com';
 const {OAuth2Client}=require('google-auth-library');
 const jwt=require('jsonwebtoken');
-const CLIENT_ID='236842425131-insapaglakr212inlhpfdvc01thnotri.apps.googleusercontent.com';
+const CLIENT_ID=process.env.CLIENT_ID;
 const usuariomodelo=require('../database/usuarioSchema');
-const JWT_KEY='miClave';
+const JWT_KEY=process.env.JWT_KEY;
 googleAuth=(req,res)=>{
    console.log('este es el body',req.body);
    const {token}= req.body;
