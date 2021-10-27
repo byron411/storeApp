@@ -11,6 +11,7 @@ class App extends React.Component {
     isProductosVisible:true,
     isUsuariosVisible:false,
     isInicioVisible:false,
+    isVentasVisible:false,
   }
 
   constructor(props){
@@ -20,20 +21,24 @@ class App extends React.Component {
       //componenteVisible:'productos',
       isProductosVisible:window.location.pathname==='/productos',
       isUsuariosVisible:window.location.pathname==='/usuarios',
-      isInicioVisible:window.location.pathname==='/'
+      isInicioVisible:window.location.pathname==='/',
+      isVentasVisible:window.location.pathname==='/ventas'
     }
   }
 
   showProductos =()=>{
     console.log('mostrar productos');
-    this.setState({isUsuariosVisible:false, isProductosVisible:true, isInicioVisible:false})
+    this.setState({isUsuariosVisible:false, isProductosVisible:true, isInicioVisible:false,isVentasVisible:false})
   }
   showUsuarios =()=>{
     console.log('mostrar usuarios');
-    this.setState({isUsuariosVisible:true, isProductosVisible:false, isInicioVisible:false})
+    this.setState({isUsuariosVisible:true, isProductosVisible:false, isInicioVisible:false,isVentasVisible:false})
   }
   showInicio=()=>{
-    this.setState({isUsuariosVisible:false, isProductosVisible:false, isInicioVisible:true})
+    this.setState({isUsuariosVisible:false, isProductosVisible:false, isInicioVisible:true,isVentasVisible:false})
+  }
+  showVentas=()=>{
+    this.setState({isUsuariosVisible:false, isProductosVisible:false, isInicioVisible:false, isVentasVisible:true})
   }
   render(){
     
@@ -56,6 +61,10 @@ class App extends React.Component {
     else if(this.state.isInicioVisible){
       window.history.pushState({},'','/');
       mostrar=<Login />;
+    }
+    else if(this.state.isVentasVisible){
+      window.history.pushState({},'','/ventas');
+      mostrar=<Ventas />;
     }
     return(<div>{mostrar}</div>);
   }
