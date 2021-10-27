@@ -13,8 +13,8 @@ export class Ventas extends React.Component{
                 <br/>
                 <br/>
                 <br/><br/><br/><br/><br/>   
-                <div class="progress">
-                    <div class="indeterminate"></div>
+                <div className="progress">
+                    <div className="indeterminate"></div>
                 </div>
                 <br/>
                 <br/>
