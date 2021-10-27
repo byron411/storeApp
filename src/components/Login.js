@@ -61,7 +61,7 @@ export class Login extends React.Component{
             <h2 className="center light-blue-text"><i className="material-icons">business_center</i></h2>
             <h5 className="center">Productos</h5>
 
-            <p className="light">Gestiona la información de tus productos. Puedes consultar, agregar, modificar tus productos a partir de campos como indentificador, descripción, valor unitario y estado (Disponible - Agotado).</p>
+            <p className="light">Gestiona la información de tus productos. Puedes consultar, agregar, modificar tus productos a partir de campos como indentificador, descripción, valor unitario y estado (Disponible - Agotado)..</p>
           </div>
         </div>
 
