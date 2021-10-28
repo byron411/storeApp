@@ -6,7 +6,7 @@ const app = express();
 //Middlewo
 app.use(express.json());
 app.use(cors());
-require('dotenv').config();
+
 /*if(process.env.NODE_ENV !== 'production'){
     
     console.log('No estamos en producción');
